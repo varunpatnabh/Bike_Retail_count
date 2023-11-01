@@ -42,7 +42,7 @@ function predictSurgePricing() {
     console.log("Passed data for prediction are : ",inputData);
 
     // Check if any field is empty
-    if (instant === '' || isNaN(dteday) || isNaN(atemp) || isNaN(atemp) || isNaN(hum) || windspeed === '') {
+    if (instant === '' || isNaN(dteday) || temp ==='' || atemp === '' || hum === '' || windspeed === '') {
         alert('Please fill out all fields before submitting.');
         return;
     }
