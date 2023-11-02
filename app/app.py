@@ -38,7 +38,7 @@ def predict():
     prediction = model.predict(data)
 
     # Take the first value of prediction
-    result = prediction[0]
+    result = int(prediction[0])
     print("count : ",result)
     return jsonify({'prediction': str(result)})
 

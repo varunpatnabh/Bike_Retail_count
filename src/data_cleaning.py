@@ -10,7 +10,10 @@ def drop_col(df):
     params: Full Dataframe with all columns
     return: Dataframe with important columns only 
     '''
-    df = df.drop(unwanted_columns,axis = 1)
+    if 'casual' in df.columns and 'registered' in df.columns:
+        df = df.drop(['casual', 'registered','instant','dteday'], axis=1)
+    else:
+        df = df.drop(['instant','dteday'], axis=1)
     return df
 
 

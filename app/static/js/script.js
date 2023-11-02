@@ -1,11 +1,12 @@
 function predictSurgePricing() {
-    event.preventDefault(); // Prevent the default form submission behavior
-
-
-
+    
+    // e.preventDefault(); // Prevent the default form submission behavior
+        
     // Retrieve input values
-    const instant = document.getElementById('instant').value;
-    const dteday = Date(document.getElementById('dteday').value);
+    const instant = (document.getElementById('instant').value);
+    // console.log(instant,1);
+    const dteday = new Date(document.getElementById('dteday').value);
+    //const dteday = Date(document.getElementById('dteday').value);
     const season = parseInt(document.getElementById('season').value);
     const yr = parseInt(document.getElementById('yr').value);
     const mnth = parseInt(document.getElementById('mnth').value);
@@ -14,8 +15,8 @@ function predictSurgePricing() {
     const workingday = parseInt(document.getElementById('workingday').value);
     const weathersit = parseInt(document.getElementById('weathersit').value);
 
-    const temp = (parseFloat(document.getElementById('Temperature').value) - (-8)) / (39 - (-8));
-    const atemp = (parseFloat(document.getElementById('Temperature').value) - (-16)) / (50 - (-16));
+    const temp = (parseFloat(document.getElementById('temp').value) - (-8)) / (39 - (-8));
+    const atemp = (parseFloat(document.getElementById('atemp').value) - (-16)) / (50 - (-16));
     const hum = parseFloat(document.getElementById('hum').value /= 100);
     const windspeed = parseFloat(document.getElementById('windspeed').value /= 67);
 
@@ -42,10 +43,15 @@ function predictSurgePricing() {
     console.log("Passed data for prediction are : ",inputData);
 
     // Check if any field is empty
-    if (instant === '' || isNaN(dteday) || temp ==='' || atemp === '' || hum === '' || windspeed === '') {
-        alert('Please fill out all fields before submitting.');
+    if (isNaN(instant) || isNaN(dteday) || isNaN(temp) || isNaN(atemp) || isNaN(hum) || isNaN(windspeed)) {
+        alert('Please fill out all fields with valid numeric values before submitting.');
         return;
     }
+
+    //if (instant === '' || isNaN(dteday) || temp ==='' || atemp === '' || hum === '' || windspeed === '') {
+        //alert('Please fill out all fields before submitting.');
+        //return;
+    //}
 
     // Send a POST request to your Flask API
     fetch('http://localhost:5000/predict', {
@@ -57,14 +63,15 @@ function predictSurgePricing() {
     })
     .then(response => response.json())
     .then(data => handlePrediction(data.prediction));
+    console.log("Passed data for prediction are : ",inputData);
 }
-
-
+ 
 function handlePrediction(prediction) {
     // Update the UI with the predicted value
-    document.getElementById('predictedValue').textContent = 'Predicted Surge Pricing Type: ' + prediction;
+    document.getElementById('predictedValue').textContent = 'Rental bike count : ' + prediction;
     document.getElementById('predictionResult').classList.remove('hidden');
 }
+
 
 
 function resetForm() {
