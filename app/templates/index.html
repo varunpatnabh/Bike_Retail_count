@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Bike count</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Rental Bike count</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <main>
+        <form id="predictionForm">
+            <label for="instant">Trip ID</label>
+            <input type="text" id="Trip_ID" required><br>
+
+            <label for="dteday">Trip Date</label>
+            <input type="date" id="dteday" required><br>
+
+            <label for="season">Seasons</label>
+            <select id="seasons" required>
+                <option value="1">winter</option>
+                <option value="2">spring</option>
+                <option value="3">summer</option>
+                <option value="4">fall</option>
+            </select><br>
+           
+            <label for="yr">year</label>
+            <select id="yr" required>
+                <option value="0">non leap year</option>
+                <option value="1">leap year</option>
+            </select><br>
+
+            <label for="mnth">Month</label>
+            <select id="mnth" required>
+                <option value="1">jan</option>
+                <option value="2">feb</option>
+                <option value="3">march</option>
+                <option value="4">april</option>
+                <option value="5">may</option>
+                <option value="6">june</option>
+                <option value="7">july</option>
+                <option value="8">aug</option>
+                <option value="9">sept</option>
+                <option value="10">oct</option>
+                <option value="11">nov</option>
+                <option value="12">dec</option>
+            </select><br>
+
+            <label for="holiday">Holiday or not</label>
+            <select id="yr" required>
+                <option value="0">not holiday</option>
+                <option value="1">Holiday</option>
+            </select><br>
+
+            <label for="weekday">Day</label>
+            <select id="weekday" required>
+                <option value="0">sun</option>
+                <option value="1">mon</option>
+                <option value="2">tue</option>
+                <option value="3">wed</option>
+                <option value="4">thur</option>
+                <option value="5">fri</option>
+                <option value="6">sat</option>
+            </select><br>
+
+            <label for="workingday">workingday</label>
+            <select id="workingday" required>
+                <option value="0">weekend or holiday</option>
+                <option value="1">not holiday nor weekend</option>
+            </select><br>
+
+            
+            <label for="weathersit">weather</label>
+            <select id="weathersit" required>
+                <option value="1">Clear, Few clouds, Partly cloudy, Partly cloudy</option>
+                <option value="2">Mist + Cloudy, Mist + Broken clouds, Mist + Few clouds, Mist</option>
+                <option value="3">Light Snow, Light Rain + Thunderstorm + Scattered clouds, Light Rain + Scattered clouds</option>
+                <option value="4">Heavy Rain + Ice Pallets + Thunderstorm + Mist, Snow + Fog</option>
+            </select><br>
+             
+            <label for="temp">Temperature in Celsius</label>
+            <input type="number" id="temp" step="1" required><br>
+
+            <label for="atemp">Feeling Temperature in Celsius</label>
+            <input type="number" id="atemp" step="1" required><br>
+
+            <label for="hum">Humidity</label>
+            <input type="number" id="hum" step="1" required><br>
+
+            <label for="windspeed">windspeed</label>
+            <input type="number" id="windspeed" step="1" required><br>
+
+            <button type="submit" onclick="predictSurgePricing()">Predict</button>
+            <button type="button" onclick="resetForm()">Reset</button>
+        </form>
+
+        <div id="predictionResult" class="hidden">
+            <h2>Bike Rental Count:</h2>
+            <p id="predictedValue"></p>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2023 Bike Rental Count
+    </footer>
+
+    <script src=static/js/script.js></script>
+</body>
+</html>
+
+

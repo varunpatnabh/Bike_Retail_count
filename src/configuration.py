@@ -5,6 +5,6 @@ target_column =  'cnt'
 
 predictor_column = ['season', 'yr', 'mnth', 'holiday', 'weekday',
        'workingday', 'weathersit', 'temp', 'atemp', 'hum', 'windspeed',
-       'casual', 'registered']
+       ]
 
-unwanted_columns = ['instant','dteday']
+unwanted_columns = ['instant','dteday','casual', 'registered']
